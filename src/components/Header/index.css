@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.header button {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(45, 98, 158);
+  border: none;
+  font-size: 30px;
+}
+.header .input {
+  width: 520px;
+  height: 50px;
+}
+.header input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-size: 20px;
+  padding-left: 20px;
+}
