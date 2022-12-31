@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+/* import React, { Component } from "react";
 import "./index.css";
 export default class Header extends Component {
   handleKeyUp = (e) => {
@@ -16,14 +16,47 @@ export default class Header extends Component {
       }
     }
   };
+
   render() {
     return (
       <div className="header">
-        <div className="input" onKeyUp={this.handleKeyUp}>
-          <input type="text" />
+        <div className="input">
+          <input type="text" onKeyUp={this.handleKeyUp} />
         </div>
         <button>+</button>
       </div>
     );
   }
+} */
+
+import React, { useState } from "react";
+import "./index.css";
+
+export default function Header(props) {
+  const { updateTodos } = props;
+  const [inputText, setInputText] = useState("");
+  const handleChange = (e) => {
+    setInputText(e.target.value);
+  };
+  const handleClick = () => {
+    if (inputText.trim() !== "") {
+      updateTodos({
+        id: Date.now().toString(),
+        name: inputText,
+        done: false,
+      });
+      setInputText("");
+    } else {
+      alert("do something");
+      setInputText("");
+    }
+  };
+  return (
+    <div className="header">
+      <div className="input">
+        <input type="text" onChange={handleChange} value={inputText} />
+      </div>
+      <button onClick={handleClick}>+</button>
+    </div>
+  );
 }

@@ -1,9 +1,10 @@
-import React from "react";
+/* import React from "react";
 import "./App.css";
 import Title from "./components/Title";
 import Header from "./components/Header";
 import List from "./components/List";
 import Footer from "./components/Footer";
+
 class App extends React.Component {
   state = {
     todos: [
@@ -53,6 +54,61 @@ class App extends React.Component {
       </div>
     );
   }
-}
+} */
+import React, { useState } from "react";
+import "./App.css";
+import Title from "./components/Title";
+import Header from "./components/Header";
+import List from "./components/List";
+import Footer from "./components/Footer";
 
+function App() {
+  const [todos, setTodo] = useState([
+    { id: "1", name: "debug", done: true },
+    { id: "2", name: "learn", done: false },
+    { id: "3", name: "make food", done: false },
+  ]);
+
+  const getTrueOrFalse = (bl) => {
+    let newTodos = todos.map((todo) => {
+      if (todo.id === bl.id) {
+        todo.done = bl.done;
+      }
+      return todo;
+    });
+    setTodo(newTodos);
+  };
+
+  const deleteTodo = (id) => {
+    console.log(id);
+    let newTodos = todos.filter((todo) => todo.id !== id);
+    setTodo(newTodos);
+  };
+
+  const updateTodos = (OBJ) => {
+    console.log(OBJ);
+    let newTodos = [OBJ, ...todos];
+    setTodo(newTodos);
+  };
+
+  const clearAllDone = () => {
+    let newTodos = todos.filter((todo) => !todo.done);
+    setTodo(newTodos);
+  };
+
+  return (
+    <div className="main">
+      <div className="container">
+        <Title />
+        <Header updateTodos={updateTodos} />
+        <List
+          todos={todos}
+          deleteTodo={deleteTodo}
+          getTrueOrFalse={getTrueOrFalse}
+        />
+        <Footer todos={todos} clearAllDone={clearAllDone} />
+      </div>
+    </div>
+  );
+}
 export default App;

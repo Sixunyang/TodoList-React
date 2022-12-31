@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+/* import React, { Component } from "react";
 import "./index.css";
 
 export default class Item extends Component {
@@ -31,4 +31,36 @@ export default class Item extends Component {
       </div>
     );
   }
+} */
+
+import React from "react";
+import "./index.css";
+
+export default function Item(props) {
+  const { id, name, done, deleteTodo, getTrueOrFalse } = props;
+  const handleDelete = (id) => {
+    deleteTodo(id);
+  };
+  const handleChange = (e) => {
+    getTrueOrFalse({ id: e.target.id, done: e.target.checked });
+  };
+  return (
+    <div className="item">
+      <input
+        type="checkbox"
+        name=""
+        id={id}
+        defaultChecked={done}
+        onChange={handleChange}
+      />
+      <div className="content">{name}</div>
+      <i
+        className="bi bi-trash3"
+        style={{ color: "rgb(45, 98, 158)", cursor: "pointer" }}
+        onClick={() => {
+          handleDelete(id);
+        }}
+      ></i>
+    </div>
+  );
 }

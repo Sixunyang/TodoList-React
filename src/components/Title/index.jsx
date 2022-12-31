@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./index.css";
-export default class Title extends Component {
-  render() {
-    return (
-      <h1>
-        TODO <span className="blue">LIST</span>
-      </h1>
-    );
-  }
+export default function Title() {
+  return (
+    <h1>
+      TODO <span className="blue">LIST</span>
+    </h1>
+  );
 }
