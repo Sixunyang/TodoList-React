@@ -17,7 +17,7 @@ export default function Item(props) {
         } else {
           setProgress(parseInt(progress) + 1 + "px");
         }
-      }, 26);
+      }, 2608);
     }
   }, [progress, flag]);
 
